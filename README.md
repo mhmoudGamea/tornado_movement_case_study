@@ -43,11 +43,11 @@ The platform leverages **ChatGPT (gpt-o4)** for generating monthly workout and n
 | Category | Technology |
 |----------|------------|
 | **Framework** | Flutter (Dart) |
-| **State Management** | Provider / BLoC |
+| **State Management** | Provider |
 | **AI Integration** | GPT-o4 (OpenAI API) |
 | **Networking** | Dio + WebSocket (pusher_client_socket) |
 | **Payments** | Stripe Subscriptions & Stripe Connect |
-| **Storage** | Hive / SharedPreferences |
+| **Storage** | SharedPreferences |
 | **Architecture** | Clean Architecture + Repository Pattern |
 
 ---
