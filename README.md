@@ -16,8 +16,9 @@ The platform leverages **ChatGPT (gpt-o4)** for generating monthly workout and n
 - Receive **AI-generated (gpt-o4)** workout and nutrition plans monthly
 - **Stripe Subscriptions** for recurring payments
 - Real-time **chat** (one-to-one & community) with optimistic UI updates
-- Social feed: post sharing, likes, comments (socket-based)
-- Voice messages support in chat  
+- Social feed: post likes, comments (socket-based)
+- Voice messages support in chat
+- User have the ability to subscribe with a coach
 - Built using **pusher_client_socket: ^0.0.5**
 
 ### Coach App
