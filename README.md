@@ -47,8 +47,7 @@ The Coach App provides personal trainers with the tools to manage their clients.
 The Admin App serves as the central hub for managing the entire Tornado Movement ecosystem.
 It provides full visibility and control over users, coaches, subscriptions, payments, and revenue distribution, ensuring transparency and system stability.
 
-- Coach Application Review & Approval — admins review registration requests submitted by coaches, including their CVs,  
-  certificates, and experience.
+- Coach Application Review & Approval — admins review registration requests submitted by coaches, including their CVs, certificates, and experience.
 - Admins have complete visibility over each coach’s financial activity, including pending and available balances.
 - All data is synchronized automatically through Stripe and Laravel Cashier.
 - The Admin dashboard have the next for each coach:
