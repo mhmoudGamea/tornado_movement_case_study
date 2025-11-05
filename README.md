@@ -55,8 +55,7 @@ It provides full visibility and control over users, coaches, subscriptions, paym
   - Total Balance — represents the coach’s overall earnings After deducting the platform's profits.
   - Pending Balance — the coach profit's goe there for 30 day's since the user subscription.
   - Withdrawable Earnings — funds cleared after the hold period and available for instant payout.
-  - Platform Fee Tracking — the system automatically calculates and deducts a predefined platform commission from each   
-    transaction.
+  - Platform Fee Tracking — the system automatically calculates and deducts a predefined platform commission from each transaction.
   - This value is displayed transparently in the Admin dashboard for auditing and revenue monitoring.
 
 ## Tech Stack
@@ -97,8 +96,7 @@ Tornado Movement leverages **GPT-o4** and **DeepSeek Reasoner** to generate pers
 The AI considers:
 - User health data (weight, goals, injuries)
 - Previous progress
-- Dietary preferences  
-The generated plans are reviewed and displayed automatically each month through the backend API.
+- Dietary preferences The generated plans are reviewed and displayed automatically each month through the backend API.
 
 ## Real-Time Communication
 
