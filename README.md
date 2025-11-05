@@ -20,8 +20,7 @@ it combines personalized plans, real-time communication, and social engagement �
   user progress and feedback.
 - Subscription System using **flutter_stripe** in client & **Laravel Cashier** in backend users can subscribe to a coach’s  
   monthly plan.
-- Coach subscription is fully managed via Stripe Subscriptions, fully synced with the Laravel backend using Cashier for  
-  webhooks and event handling.
+- Coach subscription is fully managed via Stripe Subscriptions, fully synced with the Laravel backend using Cashier for webhooks and event handling.
 - In-App Purchases (App Store & Google Play) — integrated using the **in_app_purchase** package for handling platform-native 
   payments and digital product catalogs.
 - Real-Time Chat (1-to-1 & Community) — powered by **pusher_client_socket**, enabling live communication with optimistic UI 
@@ -57,6 +56,42 @@ It provides full visibility and control over users, coaches, subscriptions, paym
   - Platform Fee Tracking — the system automatically calculates and deducts a predefined platform commission from each transaction.
   - This value is displayed transparently in the Admin dashboard for auditing and revenue monitoring.
 
+## System Architecture
+Below is a simplified overview of the Tornado Movement ecosystem and how each component communicates:
+
+┌────────────────────────────────────────────────────────┐
+│                   Mobile Ecosystem                     │  
+│  ┌─────────────┐   ┌─────────────┐    ┌─────────────┐  │
+│  │  User App   │   │  Coach App  │    │  Admin App  │  │
+│  │  (Flutter)  │   │  (Flutter)  │    │  (Flutter)  │  │ 
+│  └──────┬──────┘   └──────┬──────┘    └──────┬──────┘  │
+└─────────┼─────────────────┼──────────────────┼─────────┘
+          │                 │                  │
+          └─────────────────┴──────────────────┘
+                            │
+                            │ HTTPS/WSS
+                            │
+                    ════════▼════════
+                    ║  Nginx Proxy  ║  ◄── Entry Point
+                    ║   Port 443    ║      Reverse Proxy
+                    ════════┬════════
+                            │
+          ┌─────────────────┴─────────────────┐
+          │                                   │
+    ┌─────▼──────┐                    ┌───────▼─────┐
+    │  Laravel   │                    │  WebSocket  │
+    │  Backend   │◄───────────────────┤   Server    │
+    │ (Monolith) │   Event Broadcast  │  (Reverb)   │
+    │  + Cashier │                    │  Port 6001  │
+    └─────┬──────┘                    └─────────────┘
+          │
+          ├──────────┬──────────┬──────────┐
+          ▼          ▼          ▼          ▼
+    ┌─────────┐ ┌────────┐ ┌────────┐ ┌────────┐
+    │  MySQL  │ │ OpenAI │ │DeepSeek│ │ Stripe │
+    │Database │ │  GPT-4 │ │Reasoner│ │Connect │
+    └─────────┘ └────────┘ └────────┘ └────────┘
+
 ## Tech Stack
 
 | Category | Technology |
@@ -71,6 +106,12 @@ It provides full visibility and control over users, coaches, subscriptions, paym
 | **Architecture** | Clean Architecture + Repository Pattern |
 | **Hosting** | Ubuntu VPS (Nginx + Hostinger) |
 | **Database** | MySQL |
+
+## In-App Purchases (Play Store & App Store)
+Tornado Movement implements in_app_purchase to manage native billing for both monthly and yearly subscriptions directly through App Store and Google Play.
+
+- Each plan is mapped to its respective product ID and verified via secure server-side receipt validation.
+- The system auto-detects renewals, cancellations, and refunds to keep the user’s plan status in sync with the backend.
 
 ## Payment Flow (Stripe + Laravel Cashier)
 
@@ -90,16 +131,16 @@ It provides full visibility and control over users, coaches, subscriptions, paym
 6. Admin dashboard displays both coach revenue and platform fees in real time.
 
 ## AI Integration
+Tornado Movement leverages **GPT-o4** and **DeepSeek Reasoner** to generate personalized workout and nutrition plans.
 
-Tornado Movement leverages **GPT-o4** and **DeepSeek Reasoner** to generate personalized workout and nutrition plans.  
 The AI considers:
 - User health data (weight, goals, injuries)
 - Previous progress
 - Dietary preferences The generated plans are reviewed and displayed automatically each month through the backend API.
 
 ## Real-Time Communication
-
 All real-time interactions (chat, posts, likes, and comments) are powered by **Pusher Channels**.  
+
 Using the `pusher_client_socket` package in Flutter, the app listens to server-side events emitted from Laravel through:
 - `post.like`
 - `post.unLike` 
@@ -110,8 +151,8 @@ Using the `pusher_client_socket` package in Flutter, the app listens to server-s
 This ensures instant updates and optimistic UI feedback.
 
 ## Project Architecture
-
 Each app (User, Coach, Admin) follows **Clean Architecture** principles:
+
 - **Presentation Layer** — Flutter UI & Provider state management.  
 - **Domain Layer** — business logic and models.  
 - **Data Layer** — API calls via Dio, connected to Laravel backend.
