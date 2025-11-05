@@ -69,7 +69,7 @@ Below is a simplified overview of the Tornado Movement ecosystem and how each co
 | **Framework** | Flutter (Dart) |
 | **Backend** | Laravel 11 (PHP 8.x) |
 | **Payments** | Stripe API + Laravel Cashier + flutter_stripe |
-| **AI Integration** | GPT-o4 + DeepSeek Reasoner |
+| **AI Integration** | GPT-4o + DeepSeek Reasoner |
 | **State Management** | Provider |
 | **Real-Time Communication** | Pusher + pusher_client_socket |
 | **In-App Purchases** | in_app_purchase (Play Store & App Store) |
@@ -101,7 +101,7 @@ Tornado Movement implements in_app_purchase to manage native billing for both mo
 6. Admin dashboard displays both coach revenue and platform fees in real time.
 
 ## AI Integration
-Tornado Movement leverages **GPT-o4** and **DeepSeek Reasoner** to generate personalized workout and nutrition plans.
+Tornado Movement leverages **GPT-4o** and **DeepSeek Reasoner** to generate personalized workout and nutrition plans.
 
 The AI considers:
 - User health data (weight, goals, injuries)
