@@ -59,38 +59,7 @@ It provides full visibility and control over users, coaches, subscriptions, paym
 ## System Architecture
 Below is a simplified overview of the Tornado Movement ecosystem and how each component communicates:
 
-┌────────────────────────────────────────────────────────┐
-│                   Mobile Ecosystem                     │  
-│  ┌─────────────┐   ┌─────────────┐    ┌─────────────┐  │
-│  │  User App   │   │  Coach App  │    │  Admin App  │  │
-│  │  (Flutter)  │   │  (Flutter)  │    │  (Flutter)  │  │ 
-│  └──────┬──────┘   └──────┬──────┘    └──────┬──────┘  │
-└─────────┼─────────────────┼──────────────────┼─────────┘
-          │                 │                  │
-          └─────────────────┴──────────────────┘
-                            │
-                            │ HTTPS/WSS
-                            │
-                    ════════▼════════
-                    ║  Nginx Proxy  ║  ◄── Entry Point
-                    ║   Port 443    ║      Reverse Proxy
-                    ════════┬════════
-                            │
-          ┌─────────────────┴─────────────────┐
-          │                                   │
-    ┌─────▼──────┐                    ┌───────▼─────┐
-    │  Laravel   │                    │  WebSocket  │
-    │  Backend   │◄───────────────────┤   Server    │
-    │ (Monolith) │   Event Broadcast  │  (Reverb)   │
-    │  + Cashier │                    │  Port 6001  │
-    └─────┬──────┘                    └─────────────┘
-          │
-          ├──────────┬──────────┬──────────┐
-          ▼          ▼          ▼          ▼
-    ┌─────────┐ ┌────────┐ ┌────────┐ ┌────────┐
-    │  MySQL  │ │ OpenAI │ │DeepSeek│ │ Stripe │
-    │Database │ │  GPT-4 │ │Reasoner│ │Connect │
-    └─────────┘ └────────┘ └────────┘ └────────┘
+![App Preview](system_architecture.jpg)
 
 ## Tech Stack
 
