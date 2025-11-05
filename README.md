@@ -1,6 +1,7 @@
 # Tornado Movement
 
 ![App Preview](demo_image/tornado_movement.png)
+**Note:** App screenshots are still under development. This section will be updated once the final UI is ready.
 
 A comprehensive AI-driven fitness ecosystem connecting users, coaches, and admins through smart training, nutrition, and community engagement.
 
