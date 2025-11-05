@@ -107,6 +107,7 @@ Using the `pusher_client_socket` package in Flutter, the app listens to server-s
 - `post.comment`
 - `message.received`
 - `audio.received`
+
 This ensures instant updates and optimistic UI feedback.
 
 ## Project Architecture
