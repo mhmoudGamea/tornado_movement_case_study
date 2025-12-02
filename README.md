@@ -1,6 +1,6 @@
 # Tornado Movement App
 
-![App Preview](demo_image/tornado_movement.png)
+![App Preview](tornado_movement.png)
 
 A **fitness and health application suite** consisting of three apps (User, Coach, Admin) built with Flutter.  
 The system delivers personalized AI-powered workout & nutrition plans, real-time community features, and integrated payment flows.
